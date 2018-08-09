@@ -16,27 +16,28 @@ class Contact extends Component {
     });
   };
 
-  // onDeleteClick = (id, dispatch) => {
-  //   axios
-  //     .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
-  //     .then(response =>
-  //       dispatch({
-  //         type: 'DELETE_CONTACT',
-  //         payload: id
-  //       })
-  //     );
-  // };
+  onDeleteClick = (id, dispatch) => {
+    console.log(id);
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(response =>
+        dispatch({
+          type: 'DELETE_CONTACT',
+          payload: id
+        })
+      );
+  };
 
   // Using async/await to delete contact
-  onDeleteClick = async (id, dispatch) => {
-    const response = await axios.delete(
-      `https://jsonplaceholder.typicode.com/users/${id}`
-    );
-    dispatch({
-      type: 'DELETE_CONTACT',
-      payload: id
-    });
-  };
+  // onDeleteClick = async (id, dispatch) => {
+  //   const response = await axios.delete(
+  //     `https://jsonplaceholder.typicode.com/users/${id}`
+  //   );
+  //   dispatch({
+  //     type: 'DELETE_CONTACT',
+  //     payload: id
+  //   });
+  // };
 
   render() {
     // Destructure our needed properties from the props

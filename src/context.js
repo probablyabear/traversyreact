@@ -19,16 +19,29 @@ const reducer = (state, action) => {
       };
 
     case 'UPDATE_CONTACT':
-      console.log(action.payload);
       return {
         ...state,
-        conatcts: state.contacts.map(
+        contacts: state.contacts.map(
           contact =>
             contact.id === action.payload.id
               ? (contact = action.payload)
               : contact
         )
       };
+
+    // case 'UPDATE_CONTACT':
+    //   console.log(action.payload);
+    //   return {
+    //     ...state,
+    //     conatcts: state.contacts.map(contact => {
+    //       if (contact.id === action.payload.id) {
+    //         console.log('ID matches:', contact.id);
+    //         return (contact = action.payload);
+    //       } else {
+    //         return contact;
+    //       }
+    //     })
+    //   };
     default:
       return state;
   }
@@ -42,22 +55,23 @@ export class Provider extends Component {
     }
   };
 
-  // componentDidMount() {
-  //   axios.get('https://jsonplaceholder.typicode.com/users').then(response =>
-  //     this.setState({
-  //       contacts: response.data
-  //     })
-  //   );
-  // }
+  componentDidMount() {
+    console.log('mounted!');
+    axios.get('https://jsonplaceholder.typicode.com/users').then(response =>
+      this.setState({
+        contacts: response.data
+      })
+    );
+  }
 
   // Get contacts using async/await
-  async componentDidMount() {
-    const response = await axios.get(
-      'https://jsonplaceholder.typicode.com/users'
-    );
+  // async componentDidMount() {
+  //   const response = await axios.get(
+  //     'https://jsonplaceholder.typicode.com/users'
+  //   );
 
-    this.setState({ contacts: response.data });
-  }
+  //   this.setState({ contacts: response.data });
+  // }
 
   render() {
     return (
