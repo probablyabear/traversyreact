@@ -56,7 +56,6 @@ export class Provider extends Component {
   };
 
   componentDidMount() {
-    console.log('mounted!');
     axios.get('https://jsonplaceholder.typicode.com/users').then(response =>
       this.setState({
         contacts: response.data
